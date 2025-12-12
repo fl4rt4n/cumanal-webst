@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cumanal Mod Menu</title>
+<style>
+body {
+  background-color: #e2e2e2;
+  font-family: Arial, sans-serif;
+  transition: all 0.5s ease;
+}
+header {
+  background: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 40px;
+  cursor: pointer;
+}
+#content {
+  padding: 20px;
+}
+button {
+  padding: 15px 30px;
+  font-size: 20px;
+  background: orange;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#proMode {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+<header id="secretHeader">Cumanal Mod Menu</header>
+<div id="content">
+  <p>Welcome to the Cumanal Mod Menu website. A totally serious, highly engineered tool for GTA V Trainer development.</p>
+  <button onclick="alert('CUMANAL!!!')">Shout CUMANAL</button>
+
+  <div id="proMode">
+    <h2>Professional Mode Enabled</h2>
+    <p>Wow, you found the secret button. Now the site looks like a real tech startup probably made this.</p>
+    <ul>
+      <li>✔ Ultra Clean UI</li>
+      <li>✔ Minimum 200% more legitimacy</li>
+      <li>✔ Website now worth at least $4.78</li>
+    </ul>
+  </div>
+</div>
+<script>
+// ==========================
+// KONAMI CODE EASTER EGG
+// ==========================
+let konami = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+let konamiIndex = 0;
+
+window.addEventListener('keydown', function(e) {
+  if (e.key === konami[konamiIndex]) {
+    konamiIndex++;
+    if (konamiIndex === konami.length) {
+      alert('KONAMI CODE ACTIVATED: ULTRA HACKER MODE');
+      startTerminal();
+      konamiIndex = 0;
+    }
+  } else {
+    konamiIndex = 0;
+  }
+});
+
+// ==========================
+// FAKE LOADING SEQUENCE
+// ==========================
+function fakeLoading() {
+  const pro = document.getElementById('proMode');
+  pro.innerHTML += '<p id="loadingText">Initializing Mods...</p>';
+  let step = 0;
+  const messages = [
+    'Loading Assets...',
+    'Connecting to GTA V...',
+    'Injecting Scripts...',
+    'Optimizing Performance...',
+    'Finalizing Setup...',
+    'Done!'
+  ];
+
+  let interval = setInterval(() => {
+    if (step < messages.length) {
+      document.getElementById('loadingText').innerText = messages[step];
+      step++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 800);
+}
+
+// ==========================
+// TERMINAL OVERLAY
+// ==========================
+function startTerminal() {
+  if (document.getElementById('terminalOverlay')) return;
+
+  const overlay = document.createElement('div');
+  overlay.id = 'terminalOverlay';
+  overlay.style = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.9);
+    color: #00ff00;
+    font-family: monospace;
+    padding: 20px;
+    z-index: 99999;
+    overflow-y: auto;
+  `;
+
+  document.body.appendChild(overlay);
+
+  let line = 0;
+  const interval = setInterval(() => {
+    if (!document.body.contains(overlay)) {
+      clearInterval(interval);
+      return;
+    }
+    const p = document.createElement('p');
+    p.innerText = `> executing command_${line} ... OK`;
+    overlay.appendChild(p);
+    overlay.scrollTop = overlay.scrollHeight;
+    line++;
+  }, 200);
+
+  overlay.addEventListener('click', () => {
+    overlay.remove();
+  });
+}
+
+let professional = false;
+
+document.getElementById('secretHeader').addEventListener('click', function() {
+  professional = !professional;
+  const pro = document.getElementById('proMode');
+  const body = document.body;
+
+  if (professional) {
+    pro.style.display = 'block';
+    body.style.backgroundColor = '#ffffff';
+    body.style.fontFamily = 'Helvetica, sans-serif';
+  } else {
+    pro.style.display = 'none';
+    body.style.backgroundColor = '#e2e2e2';
+    body.style.fontFamily = 'Arial, sans-serif';
+  }
+});
+</script>
+<audio id="bgMusic" loop>
+  <source src="despacito.mp3" type="audio/mpeg">
+</audio>
+<script>
+let hackerMode = false;
+
+function startHackerEffects() {
+  let body = document.body;
+  let interval = setInterval(() => {
+    if (!hackerMode) return clearInterval(interval);
+    body.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
+  }, 200);
+}
+
+document.getElementById('secretHeader').addEventListener('dblclick', function() {
+  hackerMode = !hackerMode;
+  if (hackerMode) {
+    alert('HACKER MODE ENABLED');
+    startHackerEffects();
+    document.getElementById('bgMusic').play();
+  } else {
+    alert('HACKER MODE DISABLED');
+    document.body.style.backgroundColor = '#ffffff';
+    document.getElementById('bgMusic').pause();
+  }
+});
+</script>
+</body>
+</html>
